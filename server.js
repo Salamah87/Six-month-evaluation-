@@ -58,7 +58,7 @@ function cleanScore(value) {
 
 function normalizeSubmission(input) {
   const criteria = Array.isArray(input.criteria) ? input.criteria : [];
-  const cleanedCriteria = criteria.slice(0, 6).map(item => ({
+  const cleanedCriteria = criteria.slice(0, 12).map(item => ({
     name: cleanText(item.name, 120),
     score: cleanScore(item.score),
     notes: cleanText(item.notes)
@@ -68,6 +68,7 @@ function normalizeSubmission(input) {
   return {
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
+    formType: cleanText(input.formType, 80),
     candidateName: cleanText(input.candidateName, 160),
     positionApplied: cleanText(input.positionApplied, 160),
     department: cleanText(input.department, 120),
@@ -78,6 +79,9 @@ function normalizeSubmission(input) {
     criteria: cleanedCriteria,
     totalScore,
     recommendation: cleanText(input.recommendation, 80),
+    employeeOfSixMonths: cleanText(input.employeeOfSixMonths, 160),
+    nominationReason: cleanText(input.nominationReason, 160),
+    managerEndorsement: cleanText(input.managerEndorsement, 160),
     comments: cleanText(input.comments),
     strengths: cleanText(input.strengths),
     developmentAreas: cleanText(input.developmentAreas)
@@ -88,7 +92,6 @@ function validateSubmission(submission) {
   const missing = [];
   if (!submission.candidateName) missing.push("candidateName");
   if (!submission.positionApplied) missing.push("positionApplied");
-  if (!submission.interviewerName) missing.push("interviewerName");
   if (submission.criteria.some(item => item.score === null)) missing.push("criteria scores");
   if (!submission.recommendation) missing.push("recommendation");
   return missing;
