@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقييم الستة أشهر — الحداثة للاتصالات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#2BBFCC;--teal-dk:#1A8A94;--teal-bg:#F0FBFC;
+  --gold:#F4C430;--gold-bg:#FFFBEB;
+  --navy:#0F2A4A;--green:#059669;--green-bg:#ECFDF5;
+  --gray:#64748B;--gray-lt:#F8FAFC;
+  --border:#D1FAF8;--border-gray:#E2E8F0;
+  --red:#C8102E;--orange:#F97316;--white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+@media print{body{background:white;padding:0;}.doc{box-shadow:none;width:100%;}@page{margin:0;size:A4;}}
+body{background:#CBD5E1;font-family:'Cairo',Tahoma,Arial,sans-serif;display:flex;justify-content:center;padding:28px 16px 52px;}
+.doc{width:780px;background:var(--white);box-shadow:0 24px 72px rgba(0,0,0,0.2);position:relative;overflow:hidden;}
+.stripe{position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--teal) 0%,var(--gold) 50%,var(--teal) 100%);}
+.hdr{background:var(--navy);padding:18px 44px;display:flex;justify-content:space-between;align-items:center;gap:20px;}
+.logo-circle{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dk));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-circle span{color:white;font-size:12px;font-weight:900;}
+.hdr-logo{display:flex;align-items:center;gap:12px;}
+.hdr-title{color:white;font-size:14px;font-weight:900;line-height:1.3;}
+.hdr-title small{display:block;font-size:9.5px;color:rgba(255,255,255,.5);font-weight:400;}
+.hdr-meta{text-align:left;flex-shrink:0;}
+.hdr-meta p{font-size:10px;color:rgba(255,255,255,.55);line-height:1.9;}
+.hdr-meta strong{color:var(--teal);}
+.title-band{background:linear-gradient(135deg,#E0F7FA 0%,#F0FBFC 60%,#FFFBEB 100%);padding:20px 44px 16px;border-bottom:2px solid var(--teal);position:relative;}
+.title-band::after{content:'';position:absolute;bottom:-2px;left:44px;width:60px;height:2px;background:var(--gold);}
+.sys-badge{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:white;font-size:10px;font-weight:700;padding:4px 14px 4px 10px;border-radius:20px;margin-bottom:8px;}
+.pol-title{font-size:24px;font-weight:900;color:var(--navy);margin-bottom:3px;}
+.pol-sub{font-size:13px;color:var(--gray);}
+.body{padding:24px 44px 20px;display:flex;flex-direction:column;gap:18px;}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid var(--border-gray);}
+.sec-num{min-width:28px;height:28px;background:var(--teal);color:white;font-size:11px;font-weight:900;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sec-num.gold{background:var(--gold);color:var(--navy);}
+.sec-num.navy{background:var(--navy);}
+.sec-num.green{background:var(--green);}
+.sec-title{font-size:14px;font-weight:800;color:var(--navy);}
+.doc-ftr{background:var(--navy);padding:10px 44px;display:flex;justify-content:space-between;align-items:center;}
+.ftr-l{font-size:9.5px;color:rgba(255,255,255,.4);}
+.ftr-r{font-size:9.5px;color:var(--teal);font-weight:700;letter-spacing:1px;}
+
+/* Form elements */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.form-row-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+.fld{display:flex;flex-direction:column;gap:4px;}
+.fld label{font-size:11px;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:.3px;}
+.fld input,.fld select,.fld textarea{width:100%;padding:8px 10px;border:1.5px solid var(--border-gray);border-radius:5px;font-family:'Cairo',Tahoma,Arial,sans-serif;font-size:12px;color:#334155;background:var(--white);transition:border .2s;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,191,204,.15);}
+.fld textarea{resize:vertical;min-height:60px;}
+
+/* Rating table */
+.rtable{border:1px solid var(--border-gray);border-radius:6px;overflow:hidden;}
+.rhdr{display:grid;grid-template-columns:2.4fr repeat(5,1fr) 1.8fr;background:var(--navy);padding:9px 14px;}
+.rhdr span{font-size:10px;font-weight:700;color:rgba(255,255,255,.8);text-align:center;}
+.rhdr span:first-child{text-align:right;}
+.rrow{display:grid;grid-template-columns:2.4fr repeat(5,1fr) 1.8fr;padding:10px 14px;border-top:1px solid var(--border-gray);align-items:center;}
+.rrow:nth-child(even){background:var(--gray-lt);}
+.rname{font-size:12px;font-weight:700;color:var(--navy);}
+.rname small{display:block;font-weight:400;font-size:10px;color:var(--gray);}
+.rrating{text-align:center;}
+.rrating input[type=radio]{appearance:none;width:22px;height:22px;border:1.5px solid var(--border-gray);border-radius:4px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gray);}
+.rrating input[type=radio]:hover{border-color:var(--teal);background:var(--teal-bg);}
+.rrating input[type=radio]:checked{background:var(--teal);border-color:var(--teal);color:white;position:relative;}
+.rrating input[type=radio]:checked::after{content:'✓';color:white;font-size:12px;font-weight:900;}
+.rnotes input{border:none;border-bottom:1px dashed var(--border-gray);width:100%;padding:4px 0;font-family:'Cairo',sans-serif;font-size:11px;color:#334155;background:transparent;}
+.rnotes input:focus{outline:none;border-bottom-color:var(--teal);}
+
+/* Rating legend */
+.legend{background:var(--gray-lt);border:1px solid var(--border-gray);border-radius:6px;padding:10px 14px;}
+.legend-title{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.legend-items{display:flex;gap:12px;flex-wrap:wrap;}
+.litem{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray);}
+.lbox{width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;}
+
+/* Score summary */
+.score-box{background:var(--teal-bg);border:1px solid var(--border);border-radius:6px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;}
+.score-label{font-size:12px;font-weight:700;color:var(--navy);}
+.score-total{display:flex;align-items:center;gap:12px;}
+.score-circle{width:52px;height:52px;border-radius:50%;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--teal-dk);}
+
+/* Employee of the six months */
+.emp-highlight{background:linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%);border:2px solid var(--gold);border-radius:8px;padding:18px;text-align:center;position:relative;overflow:hidden;}
+.emp-highlight::before{content:'★';position:absolute;top:-10px;left:-5px;font-size:80px;color:rgba(244,196,48,.12);font-weight:900;}
+.emp-star{font-size:36px;margin-bottom:6px;}
+.emp-title{font-size:16px;font-weight:900;color:#92400E;margin-bottom:10px;}
+.emp-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:500px;margin:0 auto;}
+.emp-row .fld label{color:#92400E;}
+.emp-row .fld input,.emp-row .fld select{border-color:#FDE68A;background:var(--white);}
+.emp-row .fld input:focus,.emp-row .fld select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(244,196,48,.15);}
+
+/* Recommendation */
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.rec-option{text-align:center;}
+.rec-option input[type=radio]{display:none;}
+.rec-card{display:block;border:2px solid var(--border-gray);border-radius:6px;padding:12px;cursor:pointer;transition:all .15s;}
+.rec-card:hover{border-color:var(--teal);background:var(--teal-bg);}
+.rec-option input[type=radio]:checked + .rec-card{background:var(--green-bg);border-color:var(--green);}
+.rec-option input[type=radio]:checked + .rec-card .rc-icon{background:var(--green);}
+.rc-icon{width:24px;height:24px;border-radius:50%;border:2px solid var(--border-gray);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.rc-label{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.rc-sub{font-size:10px;color:var(--gray);}
+
+/* Approval */
+.appr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;border-top:2px dashed var(--border-gray);padding-top:16px;}
+.ap-item{text-align:center;}
+.ap-line{height:1px;background:#CBD5E1;margin-bottom:5px;}
+.ap-lbl{font-size:10px;color:var(--gray);}
+.ap-lbl input{border:none;border-bottom:1px dashed #CBD5E1;padding:3px 5px;font-family:'Cairo',sans-serif;font-size:10px;color:#334155;text-align:center;width:100px;background:transparent;}
+.ap-lbl input:focus{outline:none;border-bottom-color:var(--teal);}
+
+/* Submit */
+.submit-row{display:flex;gap:12px;justify-content:center;margin-top:10px;}
+.btn{padding:10px 28px;border:none;border-radius:6px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;}
+.btn-primary{background:var(--teal);color:white;}
+.btn-primary:hover{background:var(--teal-dk);transform:translateY(-1px);}
+.btn-outline{background:transparent;border:2px solid var(--border-gray);color:var(--gray);}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+</style>
+</head>
+<body>
+<div class="doc">
+<div class="stripe"></div>
+<div class="hdr">
+  <div class="hdr-logo">
+    <div class="logo-circle"><span>CH</span></div>
+    <div>
+      <div class="hdr-title">الحداثة للاتصالات
+        <small>Alhadatha Telecommunications</small>
+      </div>
+    </div>
+  </div>
+  <div class="hdr-meta">
+    <p><strong>النموذج:</strong> HR-F-003</p>
+    <p><strong>الإصدار:</strong> 1.0 | <strong>التاريخ:</strong> يونيو 2026</p>
+  </div>
+</div>
+<div class="title-band">
+  <div class="sys-badge">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    نموذج الموارد البشرية
+  </div>
+  <div class="pol-title">نموذج تقييم الستة أشهر</div>
+  <div class="pol-sub">Six Month Evaluation Form — HR-F-003</div>
+</div>
+<div class="body">
+
+<!-- EMPLOYEE INFO -->
+<div>
+  <div class="sec-hdr"><div class="sec-num">1</div><div class="sec-title">معلومات الموظف — Employee Information</div></div>
+  <div class="form-row">
+    <div class="fld"><label>اسم الموظف / Employee Name</label><input type="text" placeholder="أدخل اسم الموظف"></div>
+    <div class="fld"><label>المسمى الوظيفي / Job Title</label><input type="text" placeholder="المسمى الوظيفي"></div>
+  </div>
+  <div class="form-row-3" style="margin-top:10px;">
+    <div class="fld"><label>القسم / Department</label><input type="text" placeholder="القسم"></div>
+    <div class="fld"><label>تاريخ الالتحاق / Start Date</label><input type="date"></div>
+    <div class="fld"><label>فترة التقييم / Evaluation Period</label><select><option>الأشهر 1–6</option><option>الأشهر 7–12</option></select></div>
+  </div>
+</div>
+
+<!-- RATING LEGEND -->
+<div class="legend">
+  <div class="legend-title">مقياس التقييم / Rating Scale</div>
+  <div class="legend-items">
+    <div class="litem"><div class="lbox" style="background:#FEF2F2;border:1.5px solid var(--red);color:var(--red);">1</div>ضعيف جداً / Very Poor</div>
+    <div class="litem"><div class="lbox" style="background:#FFF7ED;border:1.5px solid var(--orange);color:var(--orange);">2</div>ضعيف / Poor</div>
+    <div class="litem"><div class="lbox" style="background:var(--gold-bg);border:1.5px solid var(--gold);color:#D97706;">3</div>مقبول / Acceptable</div>
+    <div class="litem"><div class="lbox" style="background:var(--teal-bg);border:1.5px solid var(--teal);color:var(--teal-dk);">4</div>جيد / Good</div>
+    <div class="litem"><div class="lbox" style="background:var(--green-bg);border:1.5px solid var(--green);color:var(--green);">5</div>ممتاز / Excellent</div>
+  </div>
+</div>
+
+<!-- EVALUATION CRITERIA -->
+<div>
+  <div class="sec-hdr"><div class="sec-num navy">2</div><div class="sec-title">معايير التقييم — Evaluation Criteria</div></div>
+  <div class="rtable">
+    <div class="rhdr">
+      <span>المعيار / Criterion</span>
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+      <span>ملاحظات / Notes</span>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">الموهبة والموقف <small>Talent &amp; Attitude</small></div></div>
+      <div class="rrating"><input type="radio" name="c1" value="1"></div>
+      <div class="rrating"><input type="radio" name="c1" value="2"></div>
+      <div class="rrating"><input type="radio" name="c1" value="3"></div>
+      <div class="rrating"><input type="radio" name="c1" value="4"></div>
+      <div class="rrating"><input type="radio" name="c1" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">المعرفة المهنية <small>Professional Knowledge</small></div></div>
+      <div class="rrating"><input type="radio" name="c2" value="1"></div>
+      <div class="rrating"><input type="radio" name="c2" value="2"></div>
+      <div class="rrating"><input type="radio" name="c2" value="3"></div>
+      <div class="rrating"><input type="radio" name="c2" value="4"></div>
+      <div class="rrating"><input type="radio" name="c2" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">المهارات التقنية <small>Technical Skills</small></div></div>
+      <div class="rrating"><input type="radio" name="c3" value="1"></div>
+      <div class="rrating"><input type="radio" name="c3" value="2"></div>
+      <div class="rrating"><input type="radio" name="c3" value="3"></div>
+      <div class="rrating"><input type="radio" name="c3" value="4"></div>
+      <div class="rrating"><input type="radio" name="c3" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">التعليم والمؤهلات <small>Education &amp; Qualifications</small></div></div>
+      <div class="rrating"><input type="radio" name="c4" value="1"></div>
+      <div class="rrating"><input type="radio" name="c4" value="2"></div>
+      <div class="rrating"><input type="radio" name="c4" value="3"></div>
+      <div class="rrating"><input type="radio" name="c4" value="4"></div>
+      <div class="rrating"><input type="radio" name="c4" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">الخبرة العملية <small>Work Experience</small></div></div>
+      <div class="rrating"><input type="radio" name="c5" value="1"></div>
+      <div class="rrating"><input type="radio" name="c5" value="2"></div>
+      <div class="rrating"><input type="radio" name="c5" value="3"></div>
+      <div class="rrating"><input type="radio" name="c5" value="4"></div>
+      <div class="rrating"><input type="radio" name="c5" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">التواصل والعمل الجماعي <small>Communication &amp; Teamwork</small></div></div>
+      <div class="rrating"><input type="radio" name="c6" value="1"></div>
+      <div class="rrating"><input type="radio" name="c6" value="2"></div>
+      <div class="rrating"><input type="radio" name="c6" value="3"></div>
+      <div class="rrating"><input type="radio" name="c6" value="4"></div>
+      <div class="rrating"><input type="radio" name="c6" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">الالتزام والانضباط <small>Commitment &amp; Discipline</small></div></div>
+      <div class="rrating"><input type="radio" name="c7" value="1"></div>
+      <div class="rrating"><input type="radio" name="c7" value="2"></div>
+      <div class="rrating"><input type="radio" name="c7" value="3"></div>
+      <div class="rrating"><input type="radio" name="c7" value="4"></div>
+      <div class="rrating"><input type="radio" name="c7" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+    <div class="rrow">
+      <div><div class="rname">تحقيق الأهداف <small>Goal Achievement</small></div></div>
+      <div class="rrating"><input type="radio" name="c8" value="1"></div>
+      <div class="rrating"><input type="radio" name="c8" value="2"></div>
+      <div class="rrating"><input type="radio" name="c8" value="3"></div>
+      <div class="rrating"><input type="radio" name="c8" value="4"></div>
+      <div class="rrating"><input type="radio" name="c8" value="5"></div>
+      <div class="rnotes"><input type="text" placeholder="ملاحظات"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORE -->
+<div class="score-box">
+  <div>
+    <div class="score-label">مجموع الدرجات / Total Score</div>
+    <div style="font-size:10.5px;color:var(--gray);margin-top:3px;">الحد الأقصى 40 درجة | Maximum 40 points</div>
+  </div>
+  <div class="score-total">
+    <div style="text-align:center;">
+      <div style="font-size:10px;color:var(--gray);margin-bottom:4px;">المجموع</div>
+      <div class="score-circle">— / 40</div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPLOYEE OF THE SIX MONTHS -->
+<div>
+  <div class="sec-hdr"><div class="sec-num gold">3</div><div class="sec-title">موظف الستة أشهر — Employee of the Six Months</div></div>
+  <div class="emp-highlight">
+    <div class="emp-star">&#11088;</div>
+    <div class="emp-title">ترشيح موظف الستة أشهر</div>
+    <p style="font-size:12px;color:#78350F;margin-bottom:14px;">يُرشح هذا القسم الموظف الذي أظهر أداءً استثنائياً خلال فترة الستة أشهر</p>
+    <div class="emp-row">
+      <div class="fld"><label>الموظف المختار</label><input type="text" placeholder="أدخل اسم الموظف"></div>
+      <div class="fld"><label>سبب الترشيح</label><select><option value="">— اختر السبب —</option><option>أداء متميز</option><option>ريادة الفريق</option><option>إنجاز استثنائي</option><option>التزام وانضباط</option><option>تحسين العمليات</option></select></div>
+      <div class="fld"><label>تأييد المدير</label><select><option value="">— اختر —</option><option>موصى به بقوة</option><option>موصى به</option><option>محايد</option></select></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMENTS -->
+<div>
+  <div class="sec-hdr"><div class="sec-num green">4</div><div class="sec-title">ملاحظات عامة — General Comments</div></div>
+  <div class="fld"><label>نقاط القوة / Strengths</label><textarea placeholder="أبرز نقاط القوة التي أظهرها الموظف خلال فترة التقييم"></textarea></div>
+  <div class="fld" style="margin-top:10px;"><label>مجالات التطوير / Areas for Development</label><textarea placeholder="المجالات التي يمكن للموظف تحسينها"></textarea></div>
+  <div class="fld" style="margin-top:10px;"><label>ملاحظات إضافية / Additional Notes</label><textarea placeholder="أي ملاحظات أخرى"></textarea></div>
+</div>
+
+<!-- RECOMMENDATION -->
+<div>
+  <div class="sec-hdr"><div class="sec-num">5</div><div class="sec-title">التوصية النهائية — Final Recommendation</div></div>
+  <div class="rec-grid">
+    <div class="rec-option">
+      <input type="radio" name="rec" id="rec-hire" value="hire">
+      <label class="rec-card" for="rec-hire">
+        <div class="rc-icon" style="border-color:var(--green);">&#10003;</div>
+        <div class="rc-label">تجديد العقد</div>
+        <div class="rc-sub">Renew Contract</div>
+      </label>
+    </div>
+    <div class="rec-option">
+      <input type="radio" name="rec" id="rec-wait" value="wait">
+      <label class="rec-card" for="rec-wait">
+        <div class="rc-icon" style="border-color:var(--gold);">&#9879;</div>
+        <div class="rc-label">مراقبة إضافية</div>
+        <div class="rc-sub">Additional Monitoring</div>
+      </label>
+    </div>
+    <div class="rec-option">
+      <input type="radio" name="rec" id="rec-no" value="no">
+      <label class="rec-card" for="rec-no">
+        <div class="rc-icon" style="border-color:var(--red);">&#10007;</div>
+        <div class="rc-label">عدم التجديد</div>
+        <div class="rc-sub">Do Not Renew</div>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- APPROVAL -->
+<div class="appr">
+  <div class="ap-item">
+    <div class="ap-line"></div>
+    <div class="ap-lbl">توقيع المقيم / Evaluator Signature</div>
+    <div class="ap-lbl" style="margin-top:2px;">التاريخ: <input type="text" placeholder="____ / ____ / ____"></div>
+  </div>
+  <div class="ap-item">
+    <div class="ap-line"></div>
+    <div class="ap-lbl">مدير الموارد البشرية / HR Manager</div>
+    <div class="ap-lbl" style="margin-top:2px;">التاريخ: <input type="text" placeholder="____ / ____ / ____"></div>
+  </div>
+  <div class="ap-item">
+    <div class="ap-line"></div>
+    <div class="ap-lbl">المدير التنفيذي / CEO</div>
+    <div class="ap-lbl" style="margin-top:2px;">التاريخ: <input type="text" placeholder="____ / ____ / ____"></div>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-row">
+  <button class="btn btn-primary" onclick="alert('تم الإرسال بنجاح — سيتم حفظ البيانات في قاعدة البيانات (نموذج تجريبي)')">إرسال التقييم / Submit Evaluation</button>
+  <button class="btn btn-outline" onclick="window.print()">طباعة / Print</button>
+</div>
+
+</div><!-- body -->
+<div class="doc-ftr">
+  <div class="ftr-l">الحداثة للاتصالات | تقييم الستة أشهر | HR-F-003 | الإصدار 1.0</div>
+  <div class="ftr-r">ALHADATHA HR</div>
+</div>
+</div>
+</body>
+</html>
